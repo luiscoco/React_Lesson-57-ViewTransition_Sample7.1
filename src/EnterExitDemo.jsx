@@ -1,5 +1,6 @@
 // EnterExitDemo.jsx
 import { startTransition, useState } from 'react';
+import { ViewTransition } from './ViewTransition.jsx';
 
 export default function EnterExitDemo() {
   const [show, setShow] = useState(true);
@@ -40,22 +41,24 @@ export default function EnterExitDemo() {
       )}
 
       {show && (
-        <div className="enter-exit-panel" style={{ viewTransitionName: 'vt-fade' }}>
-          <h2>Interactive Panel</h2>
-          <p>
-            This element enters and exits with a ViewTransition animation.
-          </p>
-          <div className="panel-body">
+        <ViewTransition name="vt-fade">
+          <div className="enter-exit-panel">
+            <h2>Interactive Panel</h2>
             <p>
-              The panel is larger now, giving the transition more surface to showcase the motion.
+              This element enters and exits with a ViewTransition animation.
             </p>
-            <ul>
-              <li>Entrance: fade, lift, and de-blur.</li>
-              <li>Exit: fade, rise, and blur out.</li>
-              <li>Re-show any time with the controls.</li>
-            </ul>
+            <div className="panel-body">
+              <p>
+                The panel is larger now, giving the transition more surface to showcase the motion.
+              </p>
+              <ul>
+                <li>Entrance: fade, lift, and de-blur.</li>
+                <li>Exit: fade, rise, and blur out.</li>
+                <li>Re-show any time with the controls.</li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </ViewTransition>
       )}
     </div>
   );
